@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=4 uid="uid://smfw7qvt7qkb"]
+
+[ext_resource type="Script" uid="uid://cw3h8m5hl8m78" path="res://scripts/Map.cs" id="1_lcclr"]
+[ext_resource type="PackedScene" uid="uid://1txwnxvcjopr" path="res://nodes/player.tscn" id="2_5bc8q"]
+[ext_resource type="TileSet" uid="uid://dxfv254iatqos" path="res://TileSets/Tileset.tres" id="2_7dfyu"]
+[ext_resource type="Script" uid="uid://bo7uroc7omkvi" path="res://scripts/Camera.cs" id="3_7dfyu"]
+
+[node name="Map1" type="Node2D"]
+script = ExtResource("1_lcclr")
+
+[node name="TileMaps" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMaps"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD4//v/AAARAAkAAAD4//z/AAARAAoAAAD4//3/AAARAAsAAAD5//v/AAASAAkAAAD5//z/AAASAAoAAAD5//3/AAASAAsAAAD6//v/AAATAAkAAAD6//z/AAATAAoAAAD6//3/AAATAAsAAAD8//v/AAARAAkAAAD8//z/AAARAAoAAAD8//3/AAARAAsAAAD9//v/AAASAAkAAAD9//z/AAASAAoAAAD9//3/AAASAAsAAAD+//v/AAATAAkAAAD+//z/AAATAAoAAAD+//3/AAATAAsAAAAAAPv/AAARAAkAAAAAAPz/AAARAAoAAAAAAP3/AAARAAsAAAABAPv/AAASAAkAAAABAPz/AAASAAoAAAABAP3/AAASAAsAAAACAPv/AAATAAkAAAACAPz/AAATAAoAAAACAP3/AAATAAsAAAAEAPv/AAARAAkAAAAEAPz/AAARAAoAAAAEAP3/AAARAAsAAAAFAPv/AAASAAkAAAAFAPz/AAASAAoAAAAFAP3/AAASAAsAAAAGAPv/AAATAAkAAAAGAPz/AAATAAoAAAAGAP3/AAATAAsAAAAIAPv/AAARAAkAAAAIAPz/AAARAAoAAAAIAP3/AAARAAsAAAAJAPv/AAASAAkAAAAJAPz/AAASAAoAAAAJAP3/AAASAAsAAAAKAPv/AAATAAkAAAAKAPz/AAATAAoAAAAKAP3/AAATAAsAAAA=")
+tile_set = ExtResource("2_7dfyu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1.16, 0)
+zoom = Vector2(2, 2)
+script = ExtResource("3_7dfyu")
+
+[node name="RoomCenter" type="Node2D" parent="."]
+position = Vector2(50, 50)
+
+[node name="player" parent="." instance=ExtResource("2_5bc8q")]
+move_dist = 16.0
+speed = 0.2
+
+[node name="Width_Length" type="Node" parent="."]
+
+[node name="TOP_LEFT_CORNER" type="Marker2D" parent="Width_Length"]
+position = Vector2(-160, -128)
+
+[node name="BOTTOM_RIGHT_CORNER" type="Marker2D" parent="Width_Length"]
+position = Vector2(256, 128)
