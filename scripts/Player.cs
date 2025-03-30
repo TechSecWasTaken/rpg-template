@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 public partial class Player : Area2D
 {
@@ -14,6 +14,7 @@ public partial class Player : Area2D
 	public override void _Process(double delta)
 	{	
 		RayCast2D ray = GetNode<RayCast2D>("RayCast2D");
+		var collision = ray.GetCollider();
 
 		if (Input.IsActionPressed("move_up")) input_dir = Vector2.Up;
 		else if (Input.IsActionPressed("move_down")) input_dir = Vector2.Down;
@@ -24,7 +25,9 @@ public partial class Player : Area2D
 			ray.Rotation=Vector2.Zero.AngleToPoint(input_dir) - Mathf.DegToRad(90);
 		}
 
-		if (!moving) move();
+		if (!moving) { 
+			move(); 
+		}
 		
 		GD.Print(input_dir);
 	}
